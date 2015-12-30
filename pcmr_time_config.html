@@ -20,11 +20,11 @@
 	  <div class="item-container-content">
 		 <label class="item">
 			 Background Colour
-		  <input type="text" class="item-color item-color-normal" name="background-color" value="#000000">
+		  <input type="text" class="item-color item-color-normal" id="background-color" name="background-color" value="#000000">
 		</label>
 		<label class="item">
 		  Text color
-		  <input type="text" class="item-color item-color-normal" name="text-color" value="#000000">
+		  <input type="text" class="item-color item-color-normal" id="text-color" name="text-color" value="#000000">
 		</label>
 	  </div>
 	</div>
@@ -35,7 +35,13 @@
 	</div>
 	<script type="text/javascript">
 	document.getElementById('send').addEventListener('click', function() {
-		location.href = 'pebblejs://close#'
+		var text_color = document.getElementById('text-color').value;
+		var background_color = document.getElementById('background-color').value;
+		var config = {
+			'textcolor' : text_color,
+			'backgroundcolor' : background_color
+		};
+		location.href = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(config));
 		});
 	</script>
   </form>
